@@ -18,6 +18,12 @@ const userSchema = new Schema (
                 return validator.isEmail(value)
             }
         },
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'thought'
+            }
+        ]
 
     },
     {
