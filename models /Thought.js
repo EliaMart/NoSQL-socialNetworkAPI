@@ -1,12 +1,12 @@
-const { Schema, model } = require('mongoose');
-
+const { Schema, model, Types } = require('mongoose');
+// import date from utils
 
 // Schema to create reaction 
 const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            // default:
+            default: () => new Types.ObjectId(),
         },
         reactionBody: {
             type: String,
@@ -37,6 +37,7 @@ const thoughtSchema = new Schema (
         createdAt: {
             type: Date,
             default: Date.now,
+            get: timestamp => dateFormat(timestamp),
         },
         username: {
             type: String, 
@@ -46,7 +47,8 @@ const thoughtSchema = new Schema (
     },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            id: false
         },
     }
 );
@@ -58,6 +60,7 @@ thoughtSchema
 });
 
 
-const Thought = model('thought', thoughtSchema);
+const Thought = model('Thought', thoughtSchema);
 
-module.exports = Thought 
+module.exports = Thought; 
+module.exports = reactionSchema;
