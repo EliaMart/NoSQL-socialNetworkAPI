@@ -60,10 +60,10 @@ module.exports = {
         { $push: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       )
-        .then((User) =>
-          !user
+        .then((friend) =>
+          !friend
             ? res.status(404).json({ message: 'No friend with this id!' })
-            : res.json(video)
+            : res.json(friend)
         )
         .catch((err) => res.status(500).json(err));
     },
@@ -74,10 +74,10 @@ module.exports = {
         { $pull: { friends: { friendId: req.params.friendId } } },
         { runValidators: true, new: true }
       )
-        .then((video) =>
-          !video
+        .then((friend) =>
+          !friend
             ? res.status(404).json({ message: 'No friend with this id!' })
-            : res.json(video)
+            : res.json(friend)
         )
         .catch((err) => res.status(500).json(err));
     },
