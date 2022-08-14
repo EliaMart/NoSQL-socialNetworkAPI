@@ -16,10 +16,16 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
+            get: timestamp => dateFormat(timestamp),
         },
         username: {
             type: String, 
             required: true, 
+        }
+    },
+    {
+        toJSON: {
+            getters: true,
         }
     }
 )
@@ -47,6 +53,7 @@ const thoughtSchema = new Schema (
     },
     {
         toJSON: {
+            virtuals: true, 
             getters: true
         },
         id:false
