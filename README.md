@@ -38,9 +38,10 @@ npm run start
 Using insomnia you will be able to see the functionality of the GET, POST, PUT and DELETE routes created.
 
 
-- GET, POST, PUT AND DELETE for Users [Walkthrough video] ()
+- GET, POST, PUT AND DELETE for Users, Thoughts, Reactions and Friends 
 
-- GET, POST, PUT AND DELETE for Thoughts [Walkthrough video] ()
+    [Walkthrough video](https://drive.google.com/file/d/1h__nmQ9XxXHIm_eCMaYYfTU6LZ_1PDZD/view)
+
 
 
 
