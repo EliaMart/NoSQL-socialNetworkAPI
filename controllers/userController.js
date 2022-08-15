@@ -5,6 +5,7 @@ module.exports = {
 // get all users
   getUsers(req, res) {
     User.find()
+      .select('-__v')
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
@@ -57,7 +58,7 @@ module.exports = {
     addUserFriend(req, res) {
       User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $push: { friends: req.params.friendId } },
+        { $addToSet: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       )
         .then((friend) =>
@@ -71,7 +72,7 @@ module.exports = {
     removeUserFriend(req, res) {
       User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $pull: { friends: { friendId: req.params.friendId } } },
+        { $pull: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       )
         .then((friend) =>
